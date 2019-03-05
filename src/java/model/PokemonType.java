@@ -1,8 +1,10 @@
 
-package Client;
+package model;
+
+import model.Type;
 
 
-class PokemonType {
+public class PokemonType {
     
     private int slot;
     private Type type;

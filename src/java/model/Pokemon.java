@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Client;
+package model;
 
 import java.util.List;
 
@@ -12,12 +12,12 @@ public class Pokemon {
     
     private int id;
     private String name;
-    private List<Object> types;
+    private List<PokemonType> types;
 
     public Pokemon() {
     }
 
-    public Pokemon(int id, String name, List<Object> types) {
+    public Pokemon(int id, String name, List<PokemonType> types) {
         this.id = id;
         this.name = name;
         this.types = types;
@@ -55,25 +55,25 @@ public class Pokemon {
         this.name = name;
     }
 
-    public List<Object> getTypes() {
+    public List<PokemonType> getTypes() {
         return types;
     }
 
-    public void setTypes(List<Object> types) {
+    public void setTypes(List<PokemonType> types) {
         this.types = types;
     }
 
     @Override
     public String toString() {
-//        String allTypes = "";
-//        for (int i = 0; i < types.size()-1; i++) {
-//            allTypes += types.get(i)+ ", ";
-//        }
-//        allTypes += types.get(types.size()-1);
+        String allTypes = "";
+        for (int i = 0; i < types.size()-1; i++) {
+            allTypes += types.get(i).getType().getName() + ", ";
+        }
+        allTypes = allTypes.concat(types.get(types.size()-1).getType().getName());
         return "Pokemon: \n"
                 + "PokeDex id = " + id + "\n"
                 + "Name = " + name + "\n"
-                + "Types = " + types;
+                + "Types = " + allTypes;
     }
 
 
