@@ -34,9 +34,11 @@ public class Pokis {
     public String toString() {
         return "\n"
                 + "name = " + name + "\n"
-                + "url = " + url + "\n";
+                + "ID = " + url.substring(34, url.length()-1) + "\n";
     }
+        
     
+  
     
     
 }

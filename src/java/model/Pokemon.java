@@ -70,10 +70,11 @@ public class Pokemon {
             allTypes += types.get(i).getType().getName() + ", ";
         }
         allTypes = allTypes.concat(types.get(types.size()-1).getType().getName());
-        return "Pokemon: \n"
-                + "PokeDex id = " + id + "\n"
-                + "Name = " + name + "\n"
-                + "Types = " + allTypes;
+        return "--------------------------------------\n" //  38 
+                + " Pokemon: \n"
+                + " PokeDex id : " + id + "\n"
+                + " Race : " + name + "\n"
+                + " Types : " + allTypes ;
     }
 
 
