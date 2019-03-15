@@ -44,9 +44,12 @@ public class mainMenu {
                         System.out.println("Please list the page number you want.");
                         userInput = sc.nextLine();
                         try {
-                            Integer.parseInt(userInput);
+                            int num = Integer.parseInt(userInput);
                             System.out.println(pd.getAllPokemonsOnOneSpecificPage(userInput));
                             exists = true;
+                            if(num < 0){
+                                exists = false;
+                            }
                         } catch (Exception e) {
                             System.out.println("Sorry, there was no page with " + userInput + " as index.");
                             exists = !true;
