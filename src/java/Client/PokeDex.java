@@ -13,28 +13,31 @@ import model.Pokis;
 public class PokeDex {
 
     private String baseURL = "https://pokeapi.co/api/v2/pokemon/";
-    
+
     private Client client = ClientBuilder.newClient();
     private WebTarget target = client.target(baseURL);
 
     public Pokemon getOnePokemon(String id) {
         return target.path(id).request().get(Pokemon.class);
     }
+
     public List<Pokis> getAllPokemons() {
         PokemonList allPs = target.request().get(PokemonList.class);
         String pageURL = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=" + allPs.getCount();
         allPs = client.target(pageURL).request().get(PokemonList.class);
         return allPs.getResults();
     }
-    
-    public List<Pokis> getAllPokemonsOnOneSpecificPage(String number){
+
+    public List<Pokis> getAllPokemonsOnOneSpecificPage(String number) {
         String pageURL = "https://pokeapi.co/api/v2/pokemon?offset=" + number + "0&limit=20";
         PokemonList pokemons = client.target(pageURL).request().get(PokemonList.class);
         return pokemons.getResults();
     }
-    
-        public List<Pokemon> getAllPokemonOfSpecificType(String type) {
-        List<Pokis> allPokis = getAllPokemons();
+
+    public List<Pokemon> getAllPokemonOfSpecificTypeInGenerationOne(String type) {
+        String pageGen1 = "https://pokeapi.co/api/v2/pokemon?offset=00&limit=151";
+        PokemonList genOnePokemons = client.target(pageGen1).request().get(PokemonList.class);
+        List<Pokis> allPokis = genOnePokemons.getResults();
         List<Pokemon> allPokemon = new ArrayList<>();
         Pokemon p;
         for (Pokis poki : allPokis) {
