@@ -34,10 +34,35 @@ public class PokeDex {
         return pokemons.getResults();
     }
 
-    public List<Pokemon> getAllPokemonOfSpecificTypeInGenerationOne(String type) {
-        String pageGen1 = "https://pokeapi.co/api/v2/pokemon?offset=00&limit=151";
-        PokemonList genOnePokemons = client.target(pageGen1).request().get(PokemonList.class);
-        List<Pokis> allPokis = genOnePokemons.getResults();
+    public List<Pokemon> getAllPokemonOfSpecificTypeInSpecificGeneration(String generation, String type) {
+        String pageURL = "https://pokeapi.co/api/v2/pokemon?offset=00&limit=151";
+        switch (generation){
+            case "1":
+                pageURL = "https://pokeapi.co/api/v2/pokemon?offset=00&limit=151";
+                break;
+            case "2":
+                pageURL = "https://pokeapi.co/api/v2/pokemon?offset=151&limit=100";
+                break;
+            case "3":
+                pageURL = "https://pokeapi.co/api/v2/pokemon?offset=251&limit=135";
+                break;
+            case "4":
+                pageURL = "https://pokeapi.co/api/v2/pokemon?offset=386&limit=107";
+                break;
+            case "5":
+                pageURL = "https://pokeapi.co/api/v2/pokemon?offset=493&limit=156";
+                break;
+            case "6":
+                pageURL = "https://pokeapi.co/api/v2/pokemon?offset=649&limit=72";
+                break;
+            case "7":
+                pageURL = "https://pokeapi.co/api/v2/pokemon?offset=721&limit=86";
+                break;
+            default:
+                break;
+        }
+        PokemonList getPokemons = client.target(pageURL).request().get(PokemonList.class);
+        List<Pokis> allPokis = getPokemons.getResults();
         List<Pokemon> allPokemon = new ArrayList<>();
         Pokemon p;
         for (Pokis poki : allPokis) {

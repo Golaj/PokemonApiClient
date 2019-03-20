@@ -74,7 +74,7 @@ public class Pokemon {
                 + " Pokemon: \n"
                 + " PokeDex id : " + id + "\n"
                 + " Race : " + name + "\n"
-                + " Types : " + allTypes ;
+                + " Types : " + allTypes +"\n" ;
     }
 
 
